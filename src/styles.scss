@@ -1,0 +1,40 @@
+/* You can add global styles to this file, and also import other style files */
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+body {
+  font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12pt;
+  line-height: 1.42857143;
+  color: #333;
+  background-color: #fff;
+}
+
+a,
+a:hover,
+a:visited,
+a:active {
+  color: rgb(196, 102, 26);
+  text-decoration: none;
+}
+
+fa {
+  margin-left: 4px;
+  margin-right: 4px;
+}
+.right-aligned-header > .mat-content {
+  justify-content: space-between;
+}
+
+.mat-content > mat-panel-title,
+.mat-content > mat-panel-description {
+  flex: 0 0 auto;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.grey {
+  color: grey;
+}

@@ -1,0 +1,11 @@
+<div class='wrapper'>
+  <div class='pie-chart' #containerPieChart></div>
+  <div *ngIf='labels' class='legend d-flex justify-content-center'>
+    <div *ngFor='let label of labels; let i = index' class='item'>
+      <div class="d-flex">
+        <div class='circle' [ngStyle]='{"background": colorSlices[i]}'></div>
+        <div>{{label}}</div>
+      </div>
+    </div>
+  </div>
+</div>

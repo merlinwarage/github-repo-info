@@ -1,0 +1,132 @@
+%container-gardient {
+  background: rgba(105, 155, 200, 0.5);
+  background: -moz-radial-gradient(
+    top left,
+    ellipse cover,
+    rgba(105, 155, 200, 0.5) 0%,
+    rgba(181, 197, 216, 0.5) 57%
+  );
+  background: -webkit-gradient(
+    radial,
+    top left,
+    0px,
+    top left,
+    100%,
+    color-stop(0%, rgba(105, 155, 200, 0.5)),
+    color-stop(57%, rgba(181, 197, 216, 0.5))
+  );
+  background: -webkit-radial-gradient(
+    top left,
+    ellipse cover,
+    rgba(105, 155, 200, 0.5) 0%,
+    rgba(181, 197, 216, 0.5) 57%
+  );
+  background: -o-radial-gradient(
+    top left,
+    ellipse cover,
+    rgba(105, 155, 200, 0.5) 0%,
+    rgba(181, 197, 216, 0.5) 57%
+  );
+  background: -ms-radial-gradient(
+    top left,
+    ellipse cover,
+    rgba(105, 155, 200, 0.5) 0%,
+    rgba(181, 197, 216, 0.5) 57%
+  );
+  background: radial-gradient(
+    ellipse at top left,
+    rgba(105, 155, 200, 0.5) 0%,
+    rgba(181, 197, 216, 0.5) 57%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#699bc8', endColorstr='#b5c5d8', GradientType=1 );
+}
+
+.title-container {
+  @extend %container-gardient;
+  font-family: "Impact", "Charcoal", "sans-serif";
+  height: 250px;
+  padding-top: 80px;
+}
+
+.logo {
+  margin: 10px;
+}
+
+.logo-text {
+  font-size: 2em;
+  position: relative;
+  top: -15px;
+  left: 215px;
+}
+
+.search-block {
+  height: 180px;
+  background: #607d8b;
+}
+
+.search-container {
+  background-color: white;
+}
+
+.info-container {
+  box-shadow: 0 5px 15px -5px #333;
+  padding: 40px;
+  margin-bottom: 20px;
+  background-image: linear-gradient(rgba(105, 155, 200, 0.2), #fff);
+}
+
+.info-title {
+  min-width: 105px;
+}
+
+.search-result li {
+  border-bottom: 1px solid #dcdddf;
+  border-left: 1px solid #dcdddf;
+  border-right: 1px solid #dcdddf;
+  padding: 5px;
+  background-color: white;
+  cursor: pointer;
+  list-style-type: none;
+}
+
+.search-result li:hover {
+  background-color: #ebf9ff;
+}
+
+.search-result li a {
+  color: #888;
+  display: block;
+  text-decoration: none;
+}
+
+.search-result li a:hover {
+  color: white;
+}
+.search-result li a:active {
+  color: white;
+}
+#search-box {
+  width: 200px;
+  height: 20px;
+}
+
+ul.search-result {
+  z-index: 1000;
+  position: absolute;
+  margin-top: 8px;
+  padding-left: 0;
+}
+
+.show {
+  opacity: 1;
+  transition: 0.5s ease-in-out all;
+}
+.hide {
+  opacity: 0;
+  transition: 0.5s ease-in-out all;
+}
+
+.issue-container {
+  background-color: white;
+  margin-bottom: 100px;
+}

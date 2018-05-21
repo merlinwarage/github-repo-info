@@ -1,0 +1,110 @@
+<div class="container-fluid">
+  <div class="row title-container justify-content-center">
+    <div class="">
+      <img class="logo" src="../../assets/images/github-512.png" height="80" alt="" />
+      <img class="logo" src="../../assets/images/github-logo.png" height="80" alt="" />
+      <div class="logo-text">Repository Info</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div id="search-component" class="search-block" class="w-100">
+      <div class="jumbotron d-flex justify-content-center search-container">
+        <mat-form-field class="col-md-8">
+          <input matInput #searchBox id="search-box" class="e2e-search-box w-100" (keyup)="search(searchBox.value);" placeholder="Enter the name of a repository">
+          <ul class="search-result w-100" [class.hide]="!searchBox.value" [class.show]="searchBox.value">
+            <li class="e2e-result-list-item" *ngFor="let repo of repos$ | async" (click)="setSelectedItem(repo); searchBox.value = ''">
+              <div class="e2e-result-list-item-name">{{repo.name}}
+                <span class="grey">({{repo.full_name}})</span>
+              </div>
+            </li>
+          </ul>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <div class="row info-container hide e2e-info-container" [class.hide]="!selectedItem.id" [class.show]="selectedItem.id">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="d-flex">
+            <b class="info-title">Name:</b>
+            <span>{{selectedItem.name}}</span>
+          </div>
+          <div class="d-flex">
+            <b class="info-title">Url:</b>
+            <span>
+              <a href="{{selectedItem.html_url}}" target="_blank">{{selectedItem.html_url}}</a>
+            </span>
+          </div>
+          <div class="d-flex">
+            <b class="info-title">Description:</b>
+            <span>{{selectedItem.description}}</span>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="d-flex">
+            <b class="info-title">Stargazers:</b>
+            <span>{{selectedItem.stargazers_count}}</span>
+          </div>
+          <div class="d-flex">
+            <b class="info-title">Forks:</b>
+            <span>{{selectedItem.forks_count}}</span>
+          </div>
+          <div class="d-flex">
+            <b class="info-title">
+              <a href="#" alt="issues" (click)="showIssues(true)">Open issues:</a>
+            </b>
+            <a class="e2e-issues-link" href="#" alt="issues" (click)="showIssues(true)">{{selectedItem.open_issues_count}}
+              <fa name="info-circle"></fa>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div *ngIf="selectedItem.language" class="d-flex">
+            <b class="info-title">Language:</b>
+            <span>{{selectedItem.language}}</span>
+          </div>
+          <div *ngIf="selectedItem.homepage" class="d-flex">
+            <b class="info-title">Homepage:</b>
+            <span>{{selectedItem.homepage}}</span>
+          </div>
+          <div *ngIf="selectedItem.license?.name" class="d-flex">
+            <b class="info-title">License:</b>
+            <span>{{selectedItem.license?.name}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row issue-container">
+    <div class="w-100" *ngIf="issuePanelState">
+      <div *ngIf="!loadingIssue" class='card'>
+        <app-git-charts [data]='issues.items' [colors]='colors'></app-git-charts>
+      </div>
+
+      <mat-accordion>
+        <span *ngFor="let issue of issues.items | sortBy: updated_at">
+          <mat-expansion-panel *ngIf="issue.state !== 'closed'">
+            <mat-expansion-panel-header class="right-aligned-header">
+              <mat-panel-title>
+                <div class="e2e-issue-panel-loading" *ngIf="loadingIssue">
+                  <fa name="cog" animation="spin"></fa> Loading...</div>
+                <div *ngIf="!loadingIssue">
+                  <fa name="genderless"></fa>
+                  <span class="bold e2e-issue-panel-title">{{issue.title}}</span>
+                </div>
+              </mat-panel-title>
+              <mat-panel-description>
+                last update: {{issue.updated_at | date: 'mediumDate'}} | created: {{issue.created_at | date:'mediumDate'}}
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <pre>{{issue.body}}</pre>
+          </mat-expansion-panel>
+        </span>
+      </mat-accordion>
+    </div>
+  </div>
+</div>

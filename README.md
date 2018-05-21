@@ -1,5 +1,8 @@
 # Github Repository Info
 
+## Live demo
+http://mwserv.sytes.net/github-repo-info/
+
 ## Install/Run
 
 `npm install` 

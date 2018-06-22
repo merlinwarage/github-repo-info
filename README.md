@@ -1,4 +1,4 @@
-# Github Repository Info
+# Github Repository Info (just an Angular 6 exploration:))
 
 ## Live demo
 http://mwserv.sytes.net/github-repo-info/
